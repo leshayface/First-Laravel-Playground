@@ -87,3 +87,41 @@ Route::get('passRequestData', function(){
 Route::get('/posts/{post}', 'App\Http\Controllers\PostController@show');
 
 //{post} is the unique key that the user enters
+
+
+//ABOUT
+Route::get('/about', function () {
+    // $article = App\Models\Article::all(); just fetching them
+
+    //what if we have millions and only wanna fetch a few:
+    // $article = App\Models\Article::take(2)->get();
+
+    //buit in paginator as well:
+    // $article = App\Models\Article::paginate(2);
+
+    //we just wanna fetch all as we have only 3 then we want to order them that latest are first (works on timestamp you can pass it in)
+    $article = App\Models\Article::take(3)->latest()->get();
+
+    return view('about', ['articles' => $article]);
+
+    //can make the above all one line:
+    // return view('about', ['articles' => App\Models\Article::latest()->get()]);
+
+});
+
+//ARTICLES
+
+//show single resource
+Route::get('/articles/{article}', 'App\Http\Controllers\ArticleController@show');
+
+//list resource
+Route::get('articles', function() {
+    $article = App\Models\Article::latest()->get();
+    
+    return view('articles.index', ['articles' => $article]);
+});
+
+//OR ADD IT TO YOUR ARTICLE CONTROLLER AS AN INDEX METHOD!!
+
+
+//create a new resource
