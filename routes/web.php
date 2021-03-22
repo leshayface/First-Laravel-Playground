@@ -111,17 +111,30 @@ Route::get('/about', function () {
 
 //ARTICLES
 
+//list resource
+// Route::get('articles', function() {
+//     $article = App\Models\Article::latest()->get();
+    
+//     return view('articles.index', ['articles' => $article]);
+// });
+
+//RATHER ADD IT TO YOUR ARTICLE CONTROLLER AS AN INDEX METHOD!!
+Route::get('/articles', 'App\Http\Controllers\ArticleController@index');
+
+//persists new create resource data to db
+Route::post('/articles', 'App\Http\Controllers\ArticleController@store');
+
+
+//returns a create new resource view
+Route::get('/articles/create', 'App\Http\Controllers\ArticleController@create');
+
+
 //show single resource
 Route::get('/articles/{article}', 'App\Http\Controllers\ArticleController@show');
 
-//list resource
-Route::get('articles', function() {
-    $article = App\Models\Article::latest()->get();
-    
-    return view('articles.index', ['articles' => $article]);
-});
 
-//OR ADD IT TO YOUR ARTICLE CONTROLLER AS AN INDEX METHOD!!
+//returns a edit form view
+Route::get('/articles/{article}/edit', 'App\Http\Controllers\ArticleController@edit');
 
-
-//create a new resource
+//persists edited data to db
+Route::put('/articles/{article}', 'App\Http\Controllers\ArticleController@update');

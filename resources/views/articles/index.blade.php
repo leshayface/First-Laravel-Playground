@@ -15,3 +15,4 @@
   </div>
 
 @endsection
+        <!-- <a href="{{route('articles.show'), $article->id}}"><h2>{{$article->title}}</h2></a> -->

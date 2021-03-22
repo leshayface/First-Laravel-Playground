@@ -4,7 +4,7 @@
 @section ('content')
 
   <div>
-    <h1>ALL ARTICLES:</h1>
+    <h1>ABOUT:</h1>
     @foreach ($articles as $article)
       <div style="width:40%">
         <a href="articles/{{$article->id}}"><h2>{{$article->title}}</h2></a>
