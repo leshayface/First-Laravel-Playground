@@ -1,5 +1,9 @@
 <?php
 
+//!!CHANGE USER TABLE MIGRATION SCHEMA ID TO:
+$table->bigIncrements('id');
+
+
 //make an Article model with a migration:
 php artisan make:model Article -m
 
