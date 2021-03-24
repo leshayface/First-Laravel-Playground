@@ -46,7 +46,9 @@ class ArticleController extends Controller
       $article->save();
 
       $article->tags()->attach(request('tags'));
-      //attaching the forms data (array of tag ids) to the articles->tags
+      //attaching the forms data (array of tag ids) to the articles->tag
+      
+      return redirect('/articles/' . $article->id);
 
     }
 

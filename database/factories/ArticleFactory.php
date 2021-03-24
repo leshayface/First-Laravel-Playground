@@ -29,7 +29,6 @@ protected $model = Article::class;
 		'excerpt' => $this->faker->sentence,
 		'body' => $this->faker->paragraph,
         'img_path' => '#',
-		// 'img_path' =>$this->$faker->image('/storage/app/public/images',640,480, null, false),
         ];
     }
 }

@@ -25,7 +25,6 @@
   @enderror
 
   <label for="img_path">Image Path</label>
-  <!-- you can add a class when there is an error -->
   <input class="input @error('img_path') is-danger @enderror" type="text" name="img_path" id="img_path" value="{{old('img_path')}}"></input>
 
   @error('img_path')
