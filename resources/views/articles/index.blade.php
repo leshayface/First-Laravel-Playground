@@ -5,14 +5,20 @@
 
 <div>
     <h1>ALL ARTICLES:</h1>
-    @foreach ($articles as $article)
+    @forelse ($articles as $article)
       <div style="width:40%">
         <a href="articles/{{$article->id}}"><h2>{{$article->title}}</h2></a>
         <h4>{{$article->excerpt}}</h4>
         <!-- <p>{{$article->body}}</p> -->
       </div>
-    @endforeach
+      <p>
+        @foreach($article->tags as $tag)
+          <a href="/articles?tag={{$tag->name}}">{{$tag->name}}</a>
+        @endforeach
+      </p>
+    @empty
+        <p>No Relavent Articles</p>
+    @endforelse
   </div>
 
 @endsection
-        <!-- <a href="{{route('articles.show'), $article->id}}"><h2>{{$article->title}}</h2></a> -->
